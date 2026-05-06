@@ -81,7 +81,3 @@ const Home = async () => {
 }
 
 export default Home
-
-{
-  /*Iniciar vídeo 09 */
-}

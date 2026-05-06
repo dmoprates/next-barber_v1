@@ -4,13 +4,14 @@ import Search from "../_components/search"
 import { db } from "../_lib/prisma"
 
 interface BarbershopsPageProps {
-  searchParams: {
+  searchParams: Promise<{
     title?: string
     service?: string
-  }
+  }>
 }
 
-const BarbershopsPage = async ({ searchParams }: BarbershopsPageProps) => {
+const BarbershopsPage = async (props: BarbershopsPageProps) => {
+  const searchParams = await props.searchParams
   const { title, service } = await searchParams
   const barbershops = await db.barbershop.findMany({
     where: {
@@ -23,7 +24,7 @@ const BarbershopsPage = async ({ searchParams }: BarbershopsPageProps) => {
               },
             }
           : {},
-        searchParams.service
+        searchParams?.service
           ? {
               services: {
                 some: {

@@ -170,7 +170,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
       <Card>
         <CardContent className="flex items-center gap-3 p-3">
           {/* IMAGE */}
-          <div className="relative max-h-[110px] min-h-[110px] max-w-[110px] min-w-[110px]">
+          <div className="relative max-h-27.5 min-h-27.5 max-w-27.5 min-w-27.5">
             <Image
               alt={service.name}
               src={service.imageUrl}
@@ -214,29 +214,11 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                       locale={ptBR}
                       selected={selectedDay}
                       onSelect={handleDateSelect}
-                      fromDate={new Date()}
-                      styles={{
-                        head_cell: {
-                          width: "100%",
-                          textTransform: "capitalize",
-                        },
-                        cell: {
-                          width: "100%",
-                        },
-                        button: {
-                          width: "100%",
-                        },
-                        nav_button_previous: {
-                          width: "32px",
-                          height: "32px",
-                        },
-                        nav_button_next: {
-                          width: "32px",
-                          height: "32px",
-                        },
-                        caption: {
-                          textTransform: "capitalize",
-                        },
+                      disabled={{ before: new Date() }}
+                      classNames={{
+                        button_previous: "w-8 h-8",
+                        button_next: "w-8 h-8",
+                        caption_label: "capitalize",
                       }}
                     />
                   </div>
